@@ -28,7 +28,8 @@ REQUIRED = [
     'fastapi',      # WtMonSvr引用的模块
     'uvicorn',      # WtMonSvr引用的模块
     'itsdangerous', # WtMonSvr引用的模块
-    'websockets>=9.1'    # WtMonSvr引用的模块
+    'websockets>=9.1',    # WtMonSvr引用的模块
+    'colorlog'		# WtMonSvr中的WtLogger引用的模块
 ]
 
 EXTRAS = {}
