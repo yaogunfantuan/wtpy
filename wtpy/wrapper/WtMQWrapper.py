@@ -1,9 +1,9 @@
-from ctypes import cdll, CFUNCTYPE, c_uint32, c_bool, c_void_p, c_char_p, c_ulong
+from ctypes import cdll, CFUNCTYPE, c_uint32, c_bool, c_void_p, c_char_p, c_ulong, POINTER, c_char
 from .PlatformHelper import PlatformHelper as ph
 from wtpy.WtUtilDefs import singleton
 import os
 
-CB_ON_MSG = CFUNCTYPE(c_void_p,  c_uint32, c_char_p, c_char_p, c_uint32)
+CB_ON_MSG = CFUNCTYPE(c_void_p,  c_uint32, c_char_p, POINTER(c_char), c_uint32)
 CB_ON_LOG = CFUNCTYPE(c_void_p,  c_uint32, c_char_p, c_bool)
 
 # Python对接C接口的库
