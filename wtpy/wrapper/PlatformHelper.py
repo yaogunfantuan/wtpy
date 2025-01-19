@@ -15,6 +15,19 @@ class PlatformHelper:
         return False
 
     @staticmethod
+    def isMacOS() -> bool:
+        if "darwin" in platform.system().lower():
+            return True
+        return False
+
+    @staticmethod
+    def isMacOSArm() -> bool:
+        if ("darwin" in platform.system().lower()
+                and "arm" in platform.machine().lower()):
+            return True
+        return False
+
+    @staticmethod
     def getModule(moduleName:str, subdir:str="") -> str:
         dllname = ""
         ext = ""
@@ -25,6 +38,13 @@ class PlatformHelper:
                 dllname = "x64/"
             else:
                 dllname = "x86/"
+        elif PlatformHelper.isMacOS():
+            if PlatformHelper.isMacOSArm():
+                dllname = "macos_arm64/"
+            else:
+                dllname = "macos64/"
+            prefix = "lib"
+            ext = ".dylib"
         else:#Linux平台
             dllname = "linux/"
             prefix = "lib"
